@@ -3,76 +3,633 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChemSoft</title>
+  <title>chemistry.software | Chemistry Software Consultation</title>
+  <meta name="description" content="Professional chemistry software development and consulting services">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-  <header>
-    <nav class="navbar">
-        <div class="logo">ChemSoft</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-      <div class="dark-mode-toggle">
-        <input type="checkbox" id="toggle">
-        <label for="toggle"></label>
+  <!-- Header/Navbar -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#hero" class="logo">
+        <span class="logo-primary">chemistry.software</span>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <div class="header-actions">
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+            <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </nav>
+      
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav" class="mobile-nav">
+      <div class="container mobile-nav-container">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </div>
-    </nav>
+    </div>
   </header>
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Revolutionizing Chemical Software Solutions</h1>
-        <p>Bridging the gap between chemistry and technology with cutting-edge software.</p>
-        <a href="#solutions" class="btn">Explore Our Solutions</a>
+    <section class="hero chemistry-bg" id="hero">
+      <!-- Chemistry-themed decorative elements -->
+      <div class="hexagon hex-1"></div>
+      <div class="hexagon hex-2"></div>
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      
+      <div class="hero-gradient"></div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">Chemistry Meets <span class="text-primary">Technology</span></h1>
+          <p class="hero-description">
+            Expert consulting at the intersection of chemistry and software development. 
+            Building specialized solutions for chemical research and development.
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">
+              Get in Touch
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#services" class="btn btn-outline">Explore Services</a>
+          </div>
+        </div>
+        
+        <div class="hero-cards">
+          <div class="hero-cards-column">
+            <div class="card card-light">
+              <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2v7.31"></path>
+                <path d="M14 9.3V1.99"></path>
+                <path d="M8.5 2h7"></path>
+                <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+                <path d="M5.58 16.5h12.85"></path>
+              </svg>
+              <h3 class="card-title">Chemistry Expertise</h3>
+              <p class="card-text">Specialized knowledge in chemical processes and research</p>
+            </div>
+            <div class="card card-dark">
+              <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              </svg>
+              <h3 class="card-title">Data Solutions</h3>
+              <p class="card-text">Chemical database management and systems analysis</p>
+            </div>
+          </div>
+          
+          <div class="hero-cards-column offset">
+            <div class="card card-primary">
+              <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <h3 class="card-title">Custom Software</h3>
+              <p class="card-text">Tailored applications for chemical industries and research</p>
+            </div>
+            <div class="card card-light">
+              <svg class="card-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9h18M7 3v2M17 3v2M6 12h2M11 12h2M16 12h2M6 15h2M11 15h2M16 15h2M6 18h2M11 18h2M16 18h2M6.2 21h11.6c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H6.2c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2z"></path>
+              </svg>
+              <h3 class="card-title">Web Development</h3>
+              <p class="card-text">Chemistry-focused websites and e-commerce solutions</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="hero-circle"></div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-      <h2>About ChemSoft</h2>
-      <p>
-        With over three decades of experience, ChemSoft Industries combines deep chemistry knowledge
-        with advanced programming expertise to deliver unparalleled software solutions for the chemical industry.
-      </p>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services-section">
-      <h2>Our Services</h2>
-      <div class="services-cards">
-        <div class="service-card">
-          <h3>E-Commerce Solutions</h3>
-          <p>
-            Custom Magento webshops tailored for chemical suppliers and distributors. Streamline your online sales with our specialized e-commerce platforms.
+    <section id="services" class="services chemistry-bg">
+      <!-- Chemistry-themed decorative elements -->
+      <div class="hexagon hex-3"></div>
+      <div class="circle circle-3"></div>
+      <div class="circle circle-4"></div>
+      
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Services Offered</h2>
+          <p class="section-description">
+            Specialized solutions at the intersection of chemistry and technology, 
+            tailored to meet the unique needs of chemical industries and research.
           </p>
         </div>
-        <div class="service-card">
-          <h3>Chemistry Tooling</h3>
-          <p>
-            Powerful chemistry software tools developed in C and Go. From molecular modeling to reaction prediction, our tools accelerate research and development.
+        
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card">
+            <div class="service-icon-wrapper">
+              <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="service-title">Chemistry Software Development</h3>
+            <p class="service-description">
+              Custom software solutions designed specifically for chemical processes, 
+              laboratory management, and research applications.
+            </p>
+            <ul class="service-list">
+              <li>Laboratory Information Management Systems (LIMS)</li>
+              <li>Chemical Inventory Management</li>
+              <li>Process Automation Software</li>
+            </ul>
+          </div>
+          
+          <!-- Service 2 -->
+          <div class="service-card">
+            <div class="service-icon-wrapper">
+              <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Chemical E-commerce Solutions</h3>
+            <p class="service-description">
+              Specialized webshops and e-commerce platforms for chemical suppliers, 
+              with features tailored to the unique requirements of chemical sales.
+            </p>
+            <ul class="service-list">
+              <li>Chemical Product Catalogs</li>
+              <li>Safety Data Sheet Integration</li>
+              <li>Regulatory Compliance Features</li>
+            </ul>
+          </div>
+          
+          <!-- Service 3 -->
+          <div class="service-card">
+            <div class="service-icon-wrapper">
+              <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Chemical Data Management</h3>
+            <p class="service-description">
+              Solutions for organizing, analyzing, and visualizing chemical data, 
+              making complex information accessible and actionable.
+            </p>
+            <ul class="service-list">
+              <li>Chemical Database Design</li>
+              <li>Structure Search Systems</li>
+              <li>Data Visualization Tools</li>
+            </ul>
+          </div>
+          
+
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about chemistry-bg">
+      <!-- Chemistry-themed decorative elements -->
+      <div class="hexagon hex-4"></div>
+      <div class="hexagon hex-5"></div>
+      <div class="circle circle-5"></div>
+      
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <h2 class="section-title">About the Consultant</h2>
+            <p class="about-text">
+              With a livelong passion for chemistry and IT and over a decade of experience in the chemistry field and almost 5 years of professional experience in webdevelopment, I strive to combine my passions and bridging the gap between chemistry and software, 
+              bringing a unique perspective to the development  of software for the specific needs of the chemical industrie.
+            </p>
+            <p class="about-text">
+              Having practiced chemistry myself gives me special insight to the problems faced in the lab, which lead me to to create solutions that truly understand the needs of chemical professionals, 
+              researchers, and businesses.
+            </p>
+            
+            <div class="about-features">
+              <div class="about-feature">
+                <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <div>
+                  <h3 class="feature-title">Chemistry Background</h3>
+                  <p class="feature-text">
+                    Advanced degree in Chemistry with laboratory and industry experience
+                  </p>
+                </div>
+              </div>
+              
+              <div class="about-feature">
+                <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <div>
+                  <h3 class="feature-title">Software Development</h3>
+                  <p class="feature-text">
+                    Full-stack development expertise with focus on scientific applications and e-commerce
+                  </p>
+                </div>
+              </div>
+              
+              <div class="about-feature">
+                <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <div>
+                  <h3 class="feature-title">Industry Knowledge</h3>
+                  <p class="feature-text">
+                    Deep understanding of chemical industry workflows and challenges
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-image-container">
+            <div class="about-image-decoration-1"></div>
+            <div class="about-image-decoration-2"></div>
+            <div class="about-image-wrapper">
+              <img src="https://kzmj9wbt1hdtc1235v88.lite.vusercontent.net/placeholder.svg?height=600&width=600" alt="Chemistry Consultant" class="about-image">
+              <div class="about-stats">
+                <div class="stat-card stat-secondary">
+                  <h4 class="stat-number">10</h4>
+                  <p class="stat-label">Years in Chemistry</p>
+                </div>
+                <div class="stat-card stat-primary">
+                  <h4 class="stat-number">5</h4>
+                  <p class="stat-label">Projects Completed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio chemistry-bg">
+      <!-- Chemistry-themed decorative elements -->
+      <div class="hexagon hex-6"></div>
+      <div class="circle circle-6"></div>
+      <div class="hexagon hex-7"></div>
+      
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Portfolio</h2>
+          <p class="section-description">
+            A selection of successful projects at the intersection of chemistry and technology, 
+            showcasing solutions for various chemical industry needs.
           </p>
+        </div>
+        
+        <div class="portfolio-grid">
+          <!-- Portfolio Item 1 -->
+          <div class="portfolio-item">
+            <div class="portfolio-image-container">
+              <img src="https://kzmj9wbt1hdtc1235v88.lite.vusercontent.net/placeholder.svg?height=400&width=600" alt="ChemTrack LIMS" class="portfolio-image">
+              <div class="portfolio-overlay">
+                <button class="portfolio-view-btn">
+                  View Details 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">ChemTrack LIMS</h3>
+              <p class="portfolio-description">Laboratory Information Management System for a pharmaceutical research facility</p>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">Software Development</span>
+                <span class="portfolio-tag">Database Design</span>
+                <span class="portfolio-tag">UI/UX</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Portfolio Item 2 -->
+          <div class="portfolio-item">
+            <div class="portfolio-image-container">
+              <img src="https://kzmj9wbt1hdtc1235v88.lite.vusercontent.net/placeholder.svg?height=400&width=600" alt="ReagentShop" class="portfolio-image">
+              <div class="portfolio-overlay">
+                <button class="portfolio-view-btn">
+                  View Details 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">ReagentShop</h3>
+              <p class="portfolio-description">E-commerce platform for a chemical reagent supplier with regulatory compliance features</p>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">E-commerce</span>
+                <span class="portfolio-tag">Web Development</span>
+                <span class="portfolio-tag">Compliance</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Portfolio Item 3 -->
+          <div class="portfolio-item">
+            <div class="portfolio-image-container">
+              <img src="https://kzmj9wbt1hdtc1235v88.lite.vusercontent.net/placeholder.svg?height=400&width=600" alt="AnalyticsLab Dashboard" class="portfolio-image">
+              <div class="portfolio-overlay">
+                <button class="portfolio-view-btn">
+                  View Details 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">AnalyticsLab Dashboard</h3>
+              <p class="portfolio-description">Real-time analytics dashboard for chemical quality control processes</p>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">Data Visualization</span>
+                <span class="portfolio-tag">Analytics</span>
+                <span class="portfolio-tag">Dashboard</span>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-      <h2>Get In Touch</h2>
-      <p>Ready to revolutionize your chemical processes?</p>
-      <a href="#contact-form" class="btn">Contact Us</a>
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Get in Touch</h2>
+          <p class="section-description">
+            Have a project in mind or need consulting on chemistry software solutions? I'm here to help turn your ideas
+            into reality.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-form-container">
+            <h3 class="contact-form-title">Send a Message</h3>
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" id="subject" name="subject" class="form-input" placeholder="Project Inquiry" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="Tell me about your project or inquiry..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full">
+                Send Message
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          </div>
+
+          <div class="contact-info-container">
+            <div>
+              <h3 class="contact-info-title">Contact Information</h3>
+              <p class="contact-info-text">
+                Feel free to reach out through any of the following channels. I'm always interested in discussing new
+                projects and opportunities.
+              </p>
+
+              <div class="contact-methods">
+                <div class="contact-method">
+                  <div class="contact-method-icon-wrapper">
+                    <svg class="contact-method-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="contact-method-title">Email</h4>
+                    <a href="mailto:contact@chemtechconsulting.com" class="contact-method-value">
+                      contact@chemtechconsulting.com
+                    </a>
+                  </div>
+                </div>
+
+                <div class="contact-method">
+                  <div class="contact-method-icon-wrapper">
+                    <svg class="contact-method-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="contact-method-title">Phone</h4>
+                    <a href="tel:+11234567890" class="contact-method-value">
+                      +1 (123) 456-7890
+                    </a>
+                  </div>
+                </div>
+
+                <div class="contact-method">
+                  <div class="contact-method-icon-wrapper">
+                    <svg class="contact-method-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="contact-method-title">Location</h4>
+                    <p class="contact-method-value">Boston, MA - Available for remote consulting worldwide</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="consultation-hours">
+              <h4 class="consultation-hours-title">Consultation Hours</h4>
+              <div class="hours-list">
+                <div class="hours-item">
+                  <span>Monday - Friday</span>
+                  <span>9:00 AM - 5:00 PM EST</span>
+                </div>
+                <div class="hours-item">
+                  <span>Saturday</span>
+                  <span>By appointment</span>
+                </div>
+                <div class="hours-item">
+                  <span>Sunday</span>
+                  <span>Closed</span>
+                </div>
+              </div>
+              <div class="consultation-note">
+                <p>Initial 30-minute consultations are complimentary for qualified projects.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2024 ChemSoft Industries. All rights reserved.</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo">
+            <span class="logo-primary">ChemTech</span>
+            <span class="logo-white">Consulting</span>
+          </a>
+          <p class="footer-description">
+            Expert consulting at the intersection of chemistry and software development.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              <span class="sr-only">GitHub</span>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+              <span class="sr-only">Twitter</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h3 class="footer-title">Services</h3>
+          <ul class="footer-menu">
+            <li><a href="#services" class="footer-link">Chemistry Software Development</a></li>
+            <li><a href="#services" class="footer-link">Chemical E-commerce Solutions</a></li>
+            <li><a href="#services" class="footer-link">Chemical Data Management</a></li>
+            <li><a href="#services" class="footer-link">Chemistry Technical Consulting</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-menu">
+            <li><a href="#" class="footer-link">Home</a></li>
+            <li><a href="#about" class="footer-link">About</a></li>
+            <li><a href="#services" class="footer-link">Services</a></li>
+            <li><a href="#portfolio" class="footer-link">Portfolio</a></li>
+            <li><a href="#contact" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h3 class="footer-title">Contact</h3>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:contact@chemtechconsulting.com" class="footer-link">
+                contact@chemtechconsulting.com
+              </a>
+            </li>
+            <li class="footer-contact-item">
+              <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+11234567890" class="footer-link">
+                +1 (123) 456-7890
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="copyright">
+          © <span id="current-year"></span> ChemTech Consulting. All rights reserved.
+        </p>
+      </div>
+    </div>
   </footer>
 
+  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
