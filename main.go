@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -17,19 +18,24 @@ type Config struct {
 	Port             string
 	TelegramBotToken string
 	TelegramChatID   string
+	CapchaKeySecret  string
+	CapchaSiteKey    string
+	CapchaInstance   string
 }
 
 type contactRequest struct {
-	Name    string `json:"name"`
-	Email   string `json:"email"`
-	Subject string `json:"subject"`
-	Message string `json:"message"`
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	Subject  string `json:"subject"`
+	Message  string `json:"message"`
+	CapToken string `json:"capToken"`
 }
 
 var (
 	mu                 sync.Mutex
 	lastSubmissionTime = make(map[string]time.Time)
 	submissionCooldown = 2 * time.Minute
+	capHTTPClient      = &http.Client{Timeout: 10 * time.Second}
 )
 
 func getEnv(key, def string) string {
@@ -120,6 +126,65 @@ func sendToTelegram(cfg Config, payload contactRequest) error {
 	return nil
 }
 
+// verifyCapcha verifies a Cap (trycap.dev) token with the configured instance.
+// It returns an error when the token is missing, invalid, or cannot be verified.
+func verifyCapcha(ctx context.Context, cfg Config, token string) error {
+	if token == "" {
+		return fmt.Errorf("missing cap-token")
+	}
+	if cfg.CapchaKeySecret == "" {
+		return fmt.Errorf("CAPCHA_SECRET is not configured")
+	}
+
+	verifyURL := strings.TrimRight(cfg.CapchaInstance, "/") + "/" +
+		strings.Trim(cfg.CapchaSiteKey, "/") + "/siteverify"
+
+	payload, err := json.Marshal(map[string]string{
+		"secret":   cfg.CapchaKeySecret,
+		"response": token,
+	})
+	if err != nil {
+		return fmt.Errorf("failed to marshal captcha payload: %w", err)
+	}
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, verifyURL, bytes.NewReader(payload))
+	if err != nil {
+		return fmt.Errorf("failed to create captcha request: %w", err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := capHTTPClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("failed to reach captcha service: %w", err)
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(io.LimitReader(resp.Body, 64*1024))
+	if err != nil {
+		return fmt.Errorf("failed to read captcha response: %w", err)
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("captcha service returned status %d: %s", resp.StatusCode, strings.TrimSpace(string(body)))
+	}
+
+	var result struct {
+		Success bool   `json:"success"`
+		Error   string `json:"error"`
+	}
+	if err := json.Unmarshal(body, &result); err != nil {
+		return fmt.Errorf("failed to decode captcha response: %w", err)
+	}
+	if !result.Success {
+		if result.Error != "" {
+			return fmt.Errorf("captcha rejected: %s", result.Error)
+		}
+		return fmt.Errorf("captcha rejected")
+	}
+
+	return nil
+}
+
 func contactHandler(cfg Config) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {
@@ -156,10 +221,11 @@ func contactHandler(cfg Config) http.HandlerFunc {
 				return
 			}
 			req = contactRequest{
-				Name:    strings.TrimSpace(r.FormValue("name")),
-				Email:   strings.TrimSpace(r.FormValue("email")),
-				Subject: strings.TrimSpace(r.FormValue("subject")),
-				Message: strings.TrimSpace(r.FormValue("message")),
+				Name:     strings.TrimSpace(r.FormValue("name")),
+				Email:    strings.TrimSpace(r.FormValue("email")),
+				Subject:  strings.TrimSpace(r.FormValue("subject")),
+				Message:  strings.TrimSpace(r.FormValue("message")),
+				CapToken: strings.TrimSpace(r.FormValue("cap-token")),
 			}
 		}
 
@@ -169,6 +235,18 @@ func contactHandler(cfg Config) http.HandlerFunc {
 			_ = json.NewEncoder(w).Encode(map[string]any{
 				"ok":      false,
 				"message": "Missing required fields.",
+			})
+			return
+		}
+
+		// Verify the Cap token before any side effects (tokens are single-use)
+		if err := verifyCapcha(r.Context(), cfg, strings.TrimSpace(req.CapToken)); err != nil {
+			log.Printf("captcha verification failed for %s: %v", ip, err)
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusBadRequest)
+			_ = json.NewEncoder(w).Encode(map[string]any{
+				"ok":      false,
+				"message": "Human verification failed. Please refresh the page and try again.",
 			})
 			return
 		}
@@ -207,6 +285,13 @@ func main() {
 		Port:             ":" + getEnv("PORT", "8080"),
 		TelegramBotToken: getEnv("TELEGRAM_BOT_TOKEN", ""),
 		TelegramChatID:   getEnv("TELEGRAM_CHAT_ID", ""),
+		CapchaKeySecret:  getEnv("CAPCHA_SECRET", ""),
+		CapchaSiteKey:    getEnv("CAPCHA_SITE_KEY", "d59925ffaa"),
+		CapchaInstance:   getEnv("CAPCHA_INSTANCE", "https://capcha.hogelandlinux.nl"),
+	}
+
+	if cfg.CapchaKeySecret == "" {
+		log.Printf("Warning: CAPCHA_SECRET is not set; contact form submissions will be rejected")
 	}
 
 	mux := http.NewServeMux()

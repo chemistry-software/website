@@ -21,6 +21,9 @@ When the site is deployed, the server will automatically serve everything from `
 - Env variables:
   - `PORT` (default `8080`)
   - `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` (optional locally)
+  - `CAPCHA_SECRET` (Cap secret key, set in Coolify; contact form rejects submissions when missing)
+  - `CAPCHA_SITE_KEY` (default `d59925ffaa`)
+  - `CAPCHA_INSTANCE` (default `https://capcha.hogelandlinux.nl`)
 - Dockerfile supports Coolify deployment (multi-stage build)
 
 

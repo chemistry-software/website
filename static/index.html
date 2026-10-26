@@ -16,6 +16,9 @@
   
   <!-- Favicon -->
   <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+  <!-- Cap human verification widget -->
+  <script src="https://cdn.jsdelivr.net/npm/cap-widget@latest"></script>
 </head>
 
 <body>
@@ -299,6 +302,8 @@
                 <label for="message" class="form-label">Message</label>
                 <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="Tell me about your project or inquiry..." required></textarea>
               </div>
+
+              <cap-widget id="cap-widget" required data-cap-api-endpoint="https://capcha.hogelandlinux.nl/d59925ffaa/"></cap-widget>
 
               <button type="submit" class="btn btn-primary btn-full">
                 Send Message

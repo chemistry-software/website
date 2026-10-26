@@ -999,6 +999,20 @@
     color: rgba(var(--foreground), 0.7);
   }
   
+  /* Cap human verification widget */
+  cap-widget {
+    align-self: flex-start;
+    --cap-background: var(--background);
+    --cap-border-color: var(--border);
+    --cap-border-radius: var(--radius);
+    --cap-color: var(--foreground);
+    --cap-checkbox-background: var(--background);
+    --cap-checkbox-border: 1px solid var(--border);
+    --cap-spinner-color: var(--primary);
+    --cap-spinner-background-color: var(--border);
+    --cap-font: 'Inter', sans-serif;
+  }
+  
   .form-input,
   .form-textarea {
     width: 100%;
